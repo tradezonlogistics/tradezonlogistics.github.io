@@ -1032,3 +1032,16 @@ function submitOrder(){
   const notes=document.getElementById('f_notes').value;
   const company=document.getElementById('f_company').value;
   const num=window._orderNum||('TZL-'+Date.now().toString().slice(-6));
+
+  if(!name||!phone||!from||!to){
+    alert('Please fill in required fields: Name, Phone, From, To');
+    return;
+  }
+  const waMsg='\u{1F69B} Order '+num+'\nName: '+name+(company?'\nCompany: '+company:'')+'\nPhone: '+phone+(email?'\nEmail: '+email:'')+'\nFrom: '+from+' \u2192 '+to+(cargo?'\nCargo: '+cargo:'')+(weight?'\nWeight: '+weight:'')+(vol?'\nVolume: '+vol:'')+(notes?'\nNotes: '+notes:'');
+  window.open('https://wa.me/998991089341?text='+encodeURIComponent(waMsg),'_blank');
+  const _om=document.getElementById('orderModal');
+  if(_om)_om.style.display='none';
+}
+</script>
+</body>
+</html>
